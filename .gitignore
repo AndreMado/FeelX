@@ -1,0 +1,24 @@
+# Logs
+logs/
+*.log
+
+# Datos
+data/
+
+# Notebooks (checkpoints)
+notebooks/.ipynb_checkpoints/
+
+# Compilación de Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Variables de entorno
+.env
+
+# Bases de datos
+*.sqlite
+
+# Archivos generados por SO
+.DS_Store
+Thumbs.db
