@@ -42,3 +42,35 @@
 ├── README.md                     # Documentación del proyecto
 └── requirements.txt              # Dependencias de Python del proyecto
 
+VERSION 2
+/Xdir/apps/diciembre27/
+│
+├── dags/
+│   └── sentiment_analysis_dag.py
+├── docker/
+│   ├── kafka/
+│   ├── spark/
+│   ├── airflow/
+├── logs/
+│   └── app.log
+├── notebooks/
+│   └── exploratory_analysis.ipynb
+├── scripts/
+│   ├── producer.py
+│   ├── consumer.py
+│   └── data_preprocessing.py
+├── src/
+│   ├── __init__.py
+│   ├── config/
+│   ├── etl/
+│   ├── utils/
+│   └── main.py
+├── tests/
+│   └── test_sentiment_analysis.py
+├── data/
+│   └── processed/
+├── .env
+├── .gitignore
+├── README.md
+├── requirements.txt
+└── Dockerfile

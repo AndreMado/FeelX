@@ -40,8 +40,8 @@ services:
 
   producer:
     build:
-      context: ..  # Contexto de construcción en la raíz del proyecto
-      dockerfile: ./docker/Dockerfile
+      context: .
+      dockerfile: Dockerfile
     volumes:
       - .:/app
     environment:
@@ -55,8 +55,8 @@ services:
 
   consumer:
     build:
-      context: ..  # Contexto de construcción en la raíz del proyecto
-      dockerfile: ./docker/Dockerfile
+      context: .
+      dockerfile: Dockerfile
     volumes:
       - .:/app
     environment:

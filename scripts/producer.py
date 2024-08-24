@@ -20,7 +20,7 @@ def produce_messages():
         data = {'event':'test_message','timestamp': time.time()}
         producer.produce('twitter-stream', key='key',value=json.dumps(data),callback=delivery_report)
         producer.poll(0)
-        producer.sleep(1)
+        time.sleep(1)
 
 if __name__ == "__main__":
     produce_messages()

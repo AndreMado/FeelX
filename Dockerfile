@@ -4,8 +4,8 @@ FROM python:3.10-slim
 # Establecer el directorio de trabajo
 WORKDIR /app
 
-# Copiar todo el proyecto, incluido requirements.txt
-COPY ../ .
+# Copiar todo el proyecto, incluido requirements.txt, desde el contexto actual
+COPY . .
 
 # Instalar las dependencias de Python
 RUN pip install --no-cache-dir -r requirements.txt
