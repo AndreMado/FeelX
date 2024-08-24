@@ -68,6 +68,6 @@ services:
       - kafka-network
     command: python scripts/consumer.py
 
-networks: 
-  kafka-network: 
+networks:
+  kafka-network:
     driver: bridge
