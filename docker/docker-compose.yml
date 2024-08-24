@@ -38,6 +38,36 @@ services:
     networks:
       - kafka-network
 
+  producer:
+    build:
+      context: ..  # Contexto de construcción en la raíz del proyecto
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - kafka-1
+      - kafka-2
+    networks:
+      - kafka-network
+    command: python scripts/producer.py
+
+  consumer:
+    build:
+      context: ..  # Contexto de construcción en la raíz del proyecto
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - kafka-1
+      - kafka-2
+    networks:
+      - kafka-network
+    command: python scripts/consumer.py
+
 networks:
   kafka-network:
     driver: bridge
