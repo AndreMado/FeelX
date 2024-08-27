@@ -29,4 +29,6 @@ VERSION 1
 ├── .gitignore
 ├── README.md
 ├── requirements.txt
-└── Dockerfile
+├── Dockerfile-consumer
+├── folders-structure.txt
+└── Dockerfile-producer
