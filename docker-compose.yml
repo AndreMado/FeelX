@@ -41,7 +41,7 @@ services:
   producer:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-producer
     volumes:
       - .:/app
     environment:
@@ -53,20 +53,23 @@ services:
       - kafka-network
     command: python scripts/producer.py
 
-  consumer:
-    build:
+
+  spark:
+    build: 
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-consumer
     volumes:
-      - .:/app
+      - ./scripts:/opt/bitnami/spark/scripts
     environment:
-      - PYTHONUNBUFFERED=1
+      - SPARK_MODE=client
+    ports:
+      - "4040:4040" # Puerto para UI de Spark
     depends_on:
       - kafka-1
       - kafka-2
     networks:
       - kafka-network
-    command: python scripts/consumer.py
+    command: "spark-submit /opt/bitnami/spark/scripts/consumer.py"
 
 networks:
   kafka-network:
