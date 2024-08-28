@@ -15,4 +15,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY ./scripts /opt/bitnami/spark/scripts
 
 # Comando para ejecutar el script
-CMD ["spark-submit", "/opt/bitnami/spark/scripts/consumer.py"]
+CMD ["sleep", "infinity"]
