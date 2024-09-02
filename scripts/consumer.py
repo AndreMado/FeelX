@@ -15,6 +15,30 @@ consumer_conf = {
     'auto.offset.reset': 'earliest'  # Empezar desde el principio si no hay offset
 }
 
+# Conectar al clúster de Cassandra
+
+cluster = Cluster(['cassandra'])
+session = cluster.connect()
+
+# Interactuar con Cassandra
+
+session.execute("""
+    CREATE KEYSPACE IF NOT EXISTS my_keyspace
+    WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 3}
+""")
+
+session.set_keyspace('my_keyspace')
+
+session.execute("""
+    CREATE TABLE IF NOT EXISTS tweets (
+        id UUID PRIMARY KEY,
+        user text,
+        text text,
+        timestamp text,
+        sentiment float            
+    )
+""")
+
 # Crear una instancia del Consumer
 consumer = Consumer(**consumer_conf)
 consumer.subscribe(['twitter-stream'])
@@ -52,6 +76,11 @@ def process_message(message):
     # Mostrar los datos con analisis de sentimientos
     tweets_with_sentiment.show()
 
+    # Insertar los datos en Cassandra
+    sentiment_value = float(tweets_with_sentiment.select("sentiment").collect()[0]["sentiment"])
+    insert_statement = session.prepare("INSERT INTO tweets (id, user, text, timestamp, sentiment) VALUES (uuid(), ?, ?, ?, ?)")
+    session.execute(insert_statement, (tweet_data['user'], tweet_data['text'], tweet_data['timestamp'], sentiment_value))
+
 try:
     while True:
         msg = consumer.poll(timeout=1.0)  # Esperar mensajes
@@ -78,3 +107,4 @@ finally:
     # Asegurarse de cerrar el consumer correctamente
     consumer.close()
     spark.stop()  # Cerrar la sesion de Spark
+    session.shutdown()

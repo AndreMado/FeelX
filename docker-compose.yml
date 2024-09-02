@@ -317,7 +317,7 @@ services:
       - kafka-2
     networks:
       - kafka-network
-    command: sleep infinity
+    command: python /app/scripts/producer.py
 
 
   spark:
@@ -335,10 +335,22 @@ services:
       - kafka-2
     networks:
       - kafka-network
-    command: sleep infinity
+    command: spark-submit /opt/bitnami/spark/scripts/consumer.py
+
+  cassandra:
+    image: cassandra:latest
+    container_name: cassandra
+    ports:
+      - "9042:9042"
+    networks:
+      - kafka-network
+    volumes:
+      - cassandra-data:/var/lib/cassandra
+
 
 volumes:
   postgres-db-volume:
+  cassandra-data:
 
 networks:
   kafka-network:

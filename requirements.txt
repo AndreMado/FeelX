@@ -2,4 +2,4 @@ confluent_kafka
 python-dotenv
 pyspark
 textblob
-cassandra
+cassandra-driver
