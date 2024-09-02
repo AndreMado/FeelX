@@ -22,3 +22,5 @@ __pycache__/
 # Archivos generados por SO
 .DS_Store
 Thumbs.db
+
+scripts/data_preprocessing.py/

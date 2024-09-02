@@ -1,48 +1,4 @@
-/Xdir/apps/diciembre27
-│
-├── dags/                         # Carpeta para tus DAGs de Apache Airflow
-│   └── sentiment_analysis_dag.py # DAG principal para el flujo de trabajo
-│
-├── docker/                       # Configuración y scripts de Docker
-│   ├── kafka/                    # Archivos de configuración específicos para Kafka
-│   ├── spark/                    # Archivos de configuración específicos para PySpark
-│   ├── airflow/                  # Archivos de configuración específicos para Airflow
-│   ├── docker-compose.yml        # Archivo Docker Compose para levantar todo el stack
-│   └── Dockerfile                # Dockerfile para la aplicación principal
-│
-├── logs/                         # Logs generados por los diferentes servicios
-│   └── app.log                   # Log principal de la aplicación
-│
-├── notebooks/                    # Notebooks de Jupyter para pruebas y desarrollo
-│   └── exploratory_analysis.ipynb # Notebooks para análisis exploratorio de datos
-│
-├── scripts/                      # Scripts auxiliares
-│   ├── producer.py               # Script para producir datos a Kafka
-│   ├── consumer.py               # Script para consumir datos desde Kafka
-│   └── data_preprocessing.py     # Script para el preprocesamiento de datos
-│
-├── src/                          # Código fuente principal de la aplicación
-│   ├── __init__.py               # Inicializador de módulo
-│   ├── config/                   # Configuraciones de la aplicación
-│   ├── etl/                      # Código ETL específico para este proyecto
-│   │   ├── twitter_ingestion.py  # Ingestión de datos desde la API de Twitter
-│   │   └── sentiment_analysis.py # Análisis de sentimientos con PySpark
-│   ├── utils/                    # Utilidades y funciones compartidas
-│   │   └── helpers.py            # Funciones auxiliares (e.g., manejo de fechas, etc.)
-│   └── main.py                   # Script principal para correr la aplicación
-│
-├── tests/                        # Pruebas unitarias y de integración
-│   └── test_sentiment_analysis.py # Pruebas para el análisis de sentimientos
-│
-├── data/                         # Carpeta para los datasets almacenados
-│   └── processed/                # Datos procesados
-│
-├── .env                          # Archivo de configuración de variables de entorno
-├── .gitignore                    # Ignorar archivos innecesarios en Git
-├── README.md                     # Documentación del proyecto
-└── requirements.txt              # Dependencias de Python del proyecto
-
-VERSION 2
+VERSION 1
 /Xdir/apps/diciembre27/
 │
 ├── dags/
@@ -73,4 +29,6 @@ VERSION 2
 ├── .gitignore
 ├── README.md
 ├── requirements.txt
-└── Dockerfile
+├── Dockerfile-consumer
+├── folders-structure.txt
+└── Dockerfile-producer

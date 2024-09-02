@@ -1,0 +1,18 @@
+FROM bitnami/spark:latest
+
+# Instalar pip y las dependencias de Python
+USER root
+RUN apt-get update && apt-get install -y python3 && apt-get install -y pip
+
+COPY . .
+# Instalar confluent_kafka
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Cambiar de nuevo al usuario spark
+
+
+# Copiar los scripts de PySpark
+COPY ./scripts /opt/bitnami/spark/scripts
+
+# Comando para ejecutar el script
+CMD ["sleep", "infinity"]

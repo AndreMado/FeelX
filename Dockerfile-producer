@@ -7,9 +7,10 @@ WORKDIR /app
 # Copiar todo el proyecto, incluido requirements.txt, desde el contexto actual
 COPY . .
 
+
 # Instalar las dependencias de Python
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Comando por defecto para ejecutar el productor
-CMD ["python", "scripts/producer.py"]
+CMD ["sleep", "infinity"]
 
