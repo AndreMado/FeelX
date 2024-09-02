@@ -6,6 +6,7 @@ from pyspark.sql.functions import from_json, col
 from pyspark.sql.types import StructType, StructField, StringType
 from textblob import TextBlob
 from pyspark.sql.functions import udf
+from cassandra.cluster import Cluster
 
 # Configuracion del Consumer
 consumer_conf = {
