@@ -3,7 +3,6 @@
 This repository contains a project focused on real-time sentiment analysis using Twitter data. The project integrates various Big Data tools to create a robust and scalable pipeline that processes tweets, analyzes their sentiment (positive, negative, neutral), and visualizes the results in real-time.
 
 ## Key Components:
-- **Apache Kafka**: Handles real-time data ingestion from Twitter.
 - **PySpark**: Processes the incoming tweets and applies sentiment analysis using machine learning models.
 - **Apache Airflow**: Orchestrates the workflow, ensuring smooth execution of all processes.
 - **Cassandra**: Stores the processed sentiment analysis results in a distributed NoSQL database.
@@ -19,7 +18,6 @@ This repository contains a project focused on real-time sentiment analysis using
 ## Project Structure:
 - **`main` branch**: Stable and production-ready code.
 - **`development` branch**: Active development happens here.
-- **`feature/*` branches**: Specific features or tasks are developed in these branches.
 
 ## How to Contribute:
 1. Fork the repository.
